@@ -22,3 +22,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### 说明
+该模板是适配了PC端，然后可以使用scss来自定义全局css变量，使用了element-ui

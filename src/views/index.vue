@@ -1,7 +1,9 @@
 <template>
   <div class="index">
-    123
-    <el-Button>123</el-Button>
+    this is index
+    <el-Button v-has="'index'">123</el-Button>
+    <el-Button v-has="'index1'">456</el-Button>
+    <router-view></router-view>
   </div>
 </template>
 

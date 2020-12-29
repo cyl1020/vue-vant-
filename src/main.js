@@ -6,7 +6,7 @@ import store from './store'
 import './utils/rem'
 import './assets/css/resize.css'
 
-
+import "./assets/css/globalVariable.scss"
 import ElementUI from 'element-ui';
 Vue.use(ElementUI);
 

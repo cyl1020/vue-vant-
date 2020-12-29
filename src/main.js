@@ -6,7 +6,7 @@ import store from './store'
 import './utils/rem'
 import './assets/css/resize.css'
 
-import "./assets/css/globalVariable.scss"
+import 'element-ui/lib/theme-chalk/index.css';
 import ElementUI from 'element-ui';
 Vue.use(ElementUI);
 

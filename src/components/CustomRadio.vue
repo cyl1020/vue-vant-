@@ -82,6 +82,7 @@ export default {
 
   &-text {
     height: 40px;
+    line-height: 40px;
     user-select: none;
   }
 

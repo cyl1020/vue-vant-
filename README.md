@@ -36,23 +36,23 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 #### InfiniteScroll 无限滚动组件
 
-使用该组件需要传入一个函数，函数格式类似下面的例子
+使用该组件需要传入一个函数，函数格式类似下面的例子（这里使用setTimeout来模拟ajax请求）
 
 ```
 loadingData: {
-      type: Function,
-      default: () => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            resolve({
-              count: 30,
-              all: 30,
-            });
-            reject(10);
-          }, 2000);
+  type: Function,
+  default: () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({
+          count: 30,
+          all: 30,
         });
-      },
-    },
+        reject(10);
+      }, 2000);
+    });
+  },
+},
 ```
 
 #### CustomRadio 自定义单选框组件

@@ -76,13 +76,13 @@ export default {
   }
 
   &-input {
-    height: 40px;
+    height: 30px;
     margin-right: 8px;
   }
 
   &-text {
-    height: 40px;
-    line-height: 40px;
+    height: 30px;
+    line-height: 30px;
     user-select: none;
   }
 

@@ -52,6 +52,9 @@ export default {
       }
       this.activeIndex = index;
 
+      //checkbox 和 radio 使用 checked property 和 change 事件
+      //将v-model用在radio上v-model会将input事件改为change事件
+      //click事件的执行是在change事件之前，所以这里拿到的this.radioValue才会是上一次的值，而不是最新值
       // this.$emit("input", e.target.value);
       // if (this.noSelect && e.target.value == this.radioValue) {
       //   this.radioValue = "";

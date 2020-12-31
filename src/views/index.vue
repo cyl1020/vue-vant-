@@ -4,18 +4,33 @@
     <el-Button v-has="'index'">123</el-Button>
     <el-Button v-has="'index1'">456</el-Button>
     <CustomRadio v-model="city" :radioData="cityData" :noSelect="true" />
-    <CustomRadio v-model="className" :radioData="classNameData" />
+    <CustomRadio
+      v-model="className"
+      :radioData="classNameData"
+      @hook:mounted="test"
+    />
+    <testHeight />
+    <testHeight :height="100" />
+    <VirtualList :list="list">
+      <template #list="{data}">
+        {{ data }}
+      </template>
+    </VirtualList>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import CustomRadio from "../components/CustomRadio";
+import testHeight from "../components/testHeight";
+import VirtualList from "../components/VirtualList";
 
 export default {
   name: "Index",
   components: {
     CustomRadio,
+    testHeight,
+    VirtualList,
   },
   data() {
     return {
@@ -41,7 +56,21 @@ export default {
           value: "计科二班",
         },
       ],
+      list: [],
     };
+  },
+  mounted() {
+    this.getList();
+  },
+  methods: {
+    test() {
+      console.log(111);
+    },
+    getList() {
+      for (let i = 0; i < 10000; i++) {
+        this.list.push(`这是第${i}条数据`);
+      }
+    },
   },
 };
 </script>

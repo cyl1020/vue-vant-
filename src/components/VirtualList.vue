@@ -28,17 +28,23 @@ export default {
     itemHeight: {
       //list中每一项的高度，这里应该由使用该组件的组件来决定
       type: Number,
-      default: (30 * document.documentElement.clientWidth) / 1920,
+      default: 30,
     },
   },
   data() {
     return {
-      finalItemHeight:
-        (this.itemHeight * document.documentElement.clientWidth) / 1920,
       finalList: [], //最终在页面里面渲染的数据
     };
   },
   computed: {
+    finalItemHeight() {
+      if (document.documentElement.clientWidth <= 750) {
+        return this.itemHeight * (750 / 1920);
+      } else {
+        return this.itemHeight * (document.documentElement.clientWidth / 1920);
+      }
+    },
+
     contentHeight() {
       return this.list.length * this.finalItemHeight;
     },

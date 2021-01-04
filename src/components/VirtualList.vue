@@ -6,7 +6,7 @@
     ></div>
     <div class="virtual-list-content" ref="content">
       <div
-        :style="{ height: itemHeight + 'px' }"
+        :style="{ height: finalItemHeight + 'px' }"
         v-for="(item, index) in finalList"
         :key="index"
       >
@@ -25,16 +25,22 @@ export default {
       type: Array,
       default: () => [],
     },
+    itemHeight: {
+      //list中每一项的高度，这里应该由使用该组件的组件来决定
+      type: Number,
+      default: (30 * document.documentElement.clientWidth) / 1920,
+    },
   },
   data() {
     return {
-      itemHeight: 30, //list中每一项的高度
+      finalItemHeight:
+        (this.itemHeight * document.documentElement.clientWidth) / 1920,
       finalList: [], //最终在页面里面渲染的数据
     };
   },
   computed: {
     contentHeight() {
-      return this.list.length * this.itemHeight;
+      return this.list.length * this.finalItemHeight;
     },
   },
   mounted() {
@@ -47,16 +53,16 @@ export default {
       //先获取整个容器的高度
       const vesselHeight = this.$el.clientHeight;
       //根据itemHeight的高度去计算当前容器最多能显示多少个数据
-      const count = Math.ceil(vesselHeight / this.itemHeight);
+      const count = Math.ceil(vesselHeight / this.finalItemHeight);
       //根据scrollTop的位置去决定显示那些数据
-      const start = Math.floor(scrollTop / this.itemHeight);
+      const start = Math.floor(scrollTop / this.finalItemHeight);
       //根据开始的位置加上显示的个数来决定结束的位置
       const end = start + count;
       //根据开始的位置和结束的位置来决定显示的数据是那些
       this.finalList = this.list.slice(start, end);
       // 把可见区域的 top 设置为起始元素在整个列表中的位置（使用 transform 是为了更好的性能）
       this.$refs.content.style.webkitTransform = `translate3d(0, ${start *
-        this.itemHeight}px, 0)`;
+        this.finalItemHeight}px, 0)`;
     },
 
     handleScroll() {

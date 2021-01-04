@@ -9,9 +9,9 @@
       :radioData="classNameData"
       @hook:mounted="test"
     />
-    <testHeight />
-    <testHeight :height="100" />
-    <VirtualList :list="list">
+    <TestHeight />
+    <TestHeight :height="100" />
+    <VirtualList :list="list" :itemHeight="50">
       <template #list="{data}">
         {{ data }}
       </template>
@@ -22,14 +22,14 @@
 
 <script>
 import CustomRadio from "../components/CustomRadio";
-import testHeight from "../components/testHeight";
+import TestHeight from "../components/testHeight";
 import VirtualList from "../components/VirtualList";
 
 export default {
   name: "Index",
   components: {
     CustomRadio,
-    testHeight,
+    TestHeight,
     VirtualList,
   },
   data() {

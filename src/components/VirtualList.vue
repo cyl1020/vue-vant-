@@ -1,10 +1,10 @@
 <template>
-  <div class="virtual-list" ref="container" @scroll="handleScroll">
+  <div class="virtual_list" ref="container" @scroll="handleScroll">
     <div
-      class="virtual-list-phantom"
+      class="virtual_list-phantom"
       :style="{ height: contentHeight + 'px' }"
     ></div>
-    <div class="virtual-list-content" ref="content">
+    <div class="virtual_list-content" ref="content">
       <div
         :style="{ height: finalItemHeight + 'px' }"
         v-for="(item, index) in finalList"
@@ -80,7 +80,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.virtual-list {
+.virtual_list {
   width: 100%;
   height: 500px;
   overflow: auto;

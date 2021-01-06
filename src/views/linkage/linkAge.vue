@@ -25,8 +25,8 @@ export default {
     return {
       slideData: ["内容一", "内容二", "内容三", "内容四", "内容五"],
       activeIndex: 0,
-      offsetTops: [], //每个内容容器的scrollTop值
-      tops: [], //每个内容容器的scrollTop + clientHeight值
+      offsetTops: [], //每个内容容器的offsetTop值
+      tops: [], //每个内容容器的offsetTop + clientHeight值
     };
   },
   mounted() {

@@ -14,7 +14,7 @@ const routes = [
   // }
   {
     path: '/',
-    redirect: '/linkAge'
+    redirect: '/city'
   },
   {
     path: "/index",
@@ -54,6 +54,14 @@ const routes = [
     component: () => import('../views/linkage/linkAge.vue'),
     meta: {
       title: "联动",
+    },
+  },
+  {
+    path: "/city",
+    name: "City",
+    component: () => import('../views/city/city.vue'),
+    meta: {
+      title: "城市列表",
     },
   }
 ]

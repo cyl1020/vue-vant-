@@ -22,7 +22,7 @@
 
 <script>
 import CustomRadio from "../../components/CustomRadio";
-import TestHeight from "../../components/testHeight";
+import TestHeight from "../../components/TestHeight";
 import VirtualList from "../../components/VirtualList";
 
 export default {

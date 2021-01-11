@@ -14,7 +14,7 @@ const routes = [
   // }
   {
     path: '/',
-    redirect: '/city'
+    redirect: '/logo'
   },
   {
     path: "/index",
@@ -62,6 +62,22 @@ const routes = [
     component: () => import('../views/city/city.vue'),
     meta: {
       title: "城市列表",
+    },
+  },
+  {
+    path: "/logo",
+    name: "Logo",
+    component: () => import('../views/logo/logo.vue'),
+    meta: {
+      title: "logo",
+    },
+  },
+  {
+    path: "/todoList",
+    name: "TodoList",
+    component: () => import('../views/todoList/todoList.vue'),
+    meta: {
+      title: "todoList",
     },
   }
 ]

@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import store from "../../utils/storageUtils";
+// import store from "../../utils/storageUtils";
 
 export default {
   name: "LoginFree",
@@ -94,8 +94,8 @@ export default {
               message: "登录成功",
             });
             if (loginFree) {
-              // this.saveCookie(username);
-              this.saveInfo(username);
+              this.saveCookie(username);
+              // this.saveInfo(username);
             }
           } else {
             this.$message({
@@ -113,52 +113,52 @@ export default {
       this.$refs[formName].resetFields();
     },
 
-    // saveCookie(username, exdays = 1) {
-    //   let d = new Date();
-    //   // d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-    //   d.setTime(d.getTime() + exdays * 60 * 1000);
-    //   //toUTCString 根据世界时 (UTC) 把 Date 对象转换为字符串
-    //   let expires = "expires=" + d.toUTCString();
-    //   document.cookie = "key=" + username + ";" + expires + ";path=/";
-    // },
+    saveCookie(username, exdays = 1) {
+      let d = new Date();
+      // d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+      d.setTime(d.getTime() + exdays * 60 * 1000);
+      //toUTCString 根据世界时 (UTC) 把 Date 对象转换为字符串
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = "key=" + username + ";" + expires + ";path=/";
+    },
 
-    // //将获取到的cookie转换为一个对象
-    // getCookieObj() {
-    //   let theCookie = document.cookie;
-    //   //如果当前浏览器没有cookie就不继续往下处理了
-    //   if (!theCookie) return;
-    //   let cookieArr = theCookie.split(";");
-    //   let cookieObj = {};
+    //将获取到的cookie转换为一个对象
+    getCookieObj() {
+      let theCookie = document.cookie;
+      //如果当前浏览器没有cookie就不继续往下处理了
+      if (!theCookie) return;
+      let cookieArr = theCookie.split(";");
+      let cookieObj = {};
 
-    //   cookieArr.forEach(function(item) {
-    //     let tempArr = item.split("=");
-    //     let theKey = tempArr[0].trim();
-    //     let theValue = tempArr[1].trim();
-    //     cookieObj[theKey] = theValue;
-    //   });
-    //   return cookieObj;
-    // },
-
-    // isLogin() {
-    //   let cookieObj = this.getCookieObj();
-    //   //当cookieObj和里面的key值都存在的时候免登录
-    //   if (cookieObj && cookieObj.key) {
-    //     this.isShow = true;
-    //   }
-    // },
-
-    saveInfo(username) {
-      let time = new Date().getTime();
-      store.save("userInfo", { username, time });
+      cookieArr.forEach(function(item) {
+        let tempArr = item.split("=");
+        let theKey = tempArr[0].trim();
+        let theValue = tempArr[1].trim();
+        cookieObj[theKey] = theValue;
+      });
+      return cookieObj;
     },
 
     isLogin() {
-      let userInfo = store.get("userInfo");
-      let time = new Date().getTime();
-      if (userInfo && time - userInfo.time <= 60 * 1000) {
+      let cookieObj = this.getCookieObj();
+      //当cookieObj和里面的key值都存在的时候免登录
+      if (cookieObj && cookieObj.key) {
         this.isShow = true;
       }
     },
+
+    // saveInfo(username) {
+    //   let time = new Date().getTime();
+    //   store.save("userInfo", { username, time });
+    // },
+
+    // isLogin() {
+    //   let userInfo = store.get("userInfo");
+    //   let time = new Date().getTime();
+    //   if (userInfo && time - userInfo.time <= 60 * 1000) {
+    //     this.isShow = true;
+    //   }
+    // },
   },
 };
 </script>

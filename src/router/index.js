@@ -14,7 +14,7 @@ const routes = [
   // }
   {
     path: '/',
-    redirect: '/loginFree'
+    redirect: '/stepTest'
   },
   {
     path: "/index",
@@ -86,6 +86,14 @@ const routes = [
     component: () => import('../views/loginFree/loginFree.vue'),
     meta: {
       title: "免登录",
+    },
+  },
+  {
+    path: "/stepTest",
+    name: "StepTest",
+    component: () => import('../views/stepTest/index.vue'),
+    meta: {
+      title: "步骤测试",
     },
   }
 ]

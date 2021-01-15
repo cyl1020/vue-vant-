@@ -6,26 +6,24 @@
     label-width="100px"
     class="demo-ruleForm"
   >
-    <el-form-item label="活动名称1" prop="name1">
-      <el-input v-model="ruleForm.name1"></el-input>
-    </el-form-item>
+    <template v-for="item in formData">
+      <el-form-item :label="item.label" :prop="item.prop" :key="item.key">
+        <el-input v-model="ruleForm[item.key]"></el-input>
+      </el-form-item>
+    </template>
   </el-form>
 </template>
 
 <script>
+import { formData1, ruleForm1, rule1 } from "./static.js";
+
 export default {
   name: "Test1",
   data() {
     return {
-      ruleForm: {
-        name1: "",
-      },
-      rules: {
-        name1: [
-          { required: true, message: "请输入活动名称", trigger: "blur" },
-          { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" },
-        ],
-      },
+      formData: formData1,
+      ruleForm: ruleForm1,
+      rules: rule1,
     };
   },
 

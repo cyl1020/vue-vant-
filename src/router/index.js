@@ -95,6 +95,14 @@ const routes = [
     meta: {
       title: "步骤测试",
     },
+  },
+  {
+    path: "/buttonTest",
+    name: "ButtonTest",
+    component: () => import('../views/buttonTest/index.vue'),
+    meta: {
+      title: "自定义按钮测试",
+    },
   }
 ]
 

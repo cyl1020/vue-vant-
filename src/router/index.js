@@ -103,6 +103,14 @@ const routes = [
     meta: {
       title: "自定义按钮测试",
     },
+  },
+  {
+    path: "/carouseTest",
+    name: "CarouseTest",
+    component: () => import('../views/carouseTest/index.vue'),
+    meta: {
+      title: "自定义走马灯测试",
+    },
   }
 ]
 
